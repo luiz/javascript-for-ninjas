@@ -8,3 +8,50 @@ body{
    font-family: arial, helvetica, serif;
    font-size: 1em;
 }
+
+error{
+   color: #903322;
+   font-family: arial, helvetica, serif;
+   font-size: 1em;
+   padding-left: 20px;
+}
+
+cite a{
+   text-decoration: none;
+   color: #2323c3;
+   font-style: normal;
+   font-family: verdana, helvetica, serif;
+}
+
+form fieldset{
+   margin-left: 10px;
+   width: 360px;
+   float: right;
+   font-family: tahoma,helvetica,serif;
+}
+
+form fieldset legend{
+   padding: 0 2px;
+   font-weight: bold;
+}
+
+form fieldset ol{
+   list-style: none;
+}
+
+form fieldset ol li{
+   list-style: none;
+   padding: 5px;
+   margin: 0;  
+}
+
+form fieldset ol li label{
+   display: inline-block;
+   line-height: 1.8;
+   vertical-align: top;
+   width: 120px;
+}
+
+.hide{
+   display:none;
+}
