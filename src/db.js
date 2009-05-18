@@ -40,10 +40,26 @@ function DB(url, testing) {
   };
 
   this.addUser = function(user) {
+    $.ajax({
+      type: 'PUT',
+      url: this.url + '/' + user.login,
+      data: $.toJSON(user),
+      dataType: 'json',
+    });
     return true;
   }
 
-  this.hasUser = function() {
-    return true;
+  this.hasUser = function(user) {
+    var found = false;
+    $.ajax({
+      type: 'GET',
+      url: this.url + '/' + user.login,
+      success: function(json) {
+        var foundUser = $.evalJSON(json);
+        found = (foundUser.password == user.password);
+      },
+      async: false
+    });
+    return found;
   };
 }

@@ -35,16 +35,6 @@ var test_tasks = [
   }
 ];
 
-var test_users = [
-  {
-    id: "user1",
-    type: "user",
-    name: "Secret",
-    login: "secret",
-    password: "secret"
-  }
-];
-
 $(document).ready(function() {
     module("DB");
 
@@ -94,9 +84,9 @@ $(document).ready(function() {
       expect(1);
       var db = new DB(TEST_DB_URL, true);
       var user = {
-        "name": "Secret",
-        "password": "secret",
-        "login": "secret"
+        name: "Secret",
+        password: "secret",
+        login: "secret"
       };
       ok(db.addUser(user), "should add the test user");
     });
@@ -105,9 +95,9 @@ $(document).ready(function() {
       expect(2);
       var db = new DB(TEST_DB_URL, true);
       var user = {
-        "name": "Secret",
-        "password": "secret",
-        "login": "secret"
+        name: "Secret",
+        password: "secret",
+        login: "secret"
       };
       ok(db.addUser(user), "should add the test user");
       ok(db.hasUser(user), "should have this user");
@@ -117,9 +107,9 @@ $(document).ready(function() {
       expect(1);
       var db = new DB(TEST_DB_URL, true);
       var user = {
-        "name": "White ninja",
-        "password": "notsecret",
-        "login": "white_ninja"
+        name: "White ninja",
+        password: "notsecret",
+        login: "white_ninja"
       };
       ok(!db.hasUser(user), "should not have this user");
     });
