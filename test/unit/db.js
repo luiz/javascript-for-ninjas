@@ -1,119 +1,127 @@
 var TEST_DB_URL = 'http://localhost/db/ninja_test';
-var TESTE;
-function createTestDB() { 
-  $.ajax({
-    type: 'PUT',
-    url: TEST_DB_URL,
-    success: fillTestDB
-  });
-}
 
-function fillTestDB() {
-  var test_db = [
+var test_tasks = [
   {
-    name: "/tasks",
-    items: [
-      {
-        id: "task1",
-        where: "Dojo",
-        what: "Train ninja skills",
-        until: new Date(),
-        duration: "60"
-      },
-      {
-        id: "task2",
-        where: "Black market",
-        what: "Buy shurikens",
-        until: new Date(),
-        comment: "Need at least 10"
-      },
-      {
-        id: "task3",
-        where: "Dojo",
-        what: "Train ninja skills",
-        until: new Date(),
-        duration: "60"
-      },
-      {
-        id: "task4",
-        where: "Home",
-        what: "Sharpen my sword",
-        until: new Date(),
-        duration: "5"
-      }
-    ]
+    id: "task1",
+    type: "task",
+    where: "Dojo",
+    what: "Train ninja skills",
+    until: new Date(),
+    duration: "60"
   },
   {
-    name: "/users",
-    items: [
-      {
-        id: "user1",
-        name: "Secret",
-        login: "secret",
-        password: "secret"
-      }
-    ]
-  }];
-  TESTE = test_db;
-  for (test_item_class in test_db) {
-    $.ajax({
-      type: 'PUT',
-      url: TEST_DB_URL + test_item_class.name,
-      async: false
-    });
-    for (test_item in test_item_class.items) {
-      alert(test_item);
-      $.ajax({
-        type: 'PUT',
-        url: TEST_DB_URL + test_item_class.name + '/' + test_item.id,
-        data: test_item,
-        dataType: 'json',
-        async: false
-      });
-    }
-    alert(test_item_class.name);
-    return test_item_class;
+    id: "task2",
+    type: "task",
+    where: "Black market",
+    what: "Buy shurikens",
+    until: new Date(),
+    comment: "Need at least 10"
+  },
+  {
+    id: "task3",
+    type: "task",
+    where: "Dojo",
+    what: "Train ninja skills",
+    until: new Date(),
+    duration: "60"
+  },
+  {
+    id: "task4",
+    type: "task",
+    where: "Home",
+    what: "Sharpen my sword",
+    until: new Date(),
+    duration: "5"
   }
-}
+];
 
-function clearTestDB() {
-  $.ajax({
-    type: 'DELETE',
-    url: TEST_DB_URL,
-    async: false
-  });
-}
+var test_users = [
+  {
+    id: "user1",
+    type: "user",
+    name: "Secret",
+    login: "secret",
+    password: "secret"
+  }
+];
 
 $(document).ready(function() {
     module("DB");
 
-    var db = new DB(TEST_DB_URL);
-    test("retrieve all tasks from db", function() {
-      createTestDB();
-      equals(db.getAllTasks().length, 4, "should retrieve 4 tasks");
-      clearTestDB();
+    test("reset the db", function() {
+      expect(2);
+      var db = new DB(TEST_DB_URL, true);
+      ok(db.reset(), "should reset the database");
+      db.getAllTasks(function(json) {
+        start();
+        equals(json.length, 0, "should have no tasks after reseting");
+      });
+      stop(1000);
     });
 
-    test("finds existing user from db", function() {
-      createTestDB();
+    test("add a task to the db", function() {
+      expect(2);
+      var db = new DB(TEST_DB_URL, true);
+      db.reset();
+      ok(db.addTask({
+        id: "test_task",
+        type: "task",
+        where: "here",
+        what: "Test the application",
+        duration: "forever"
+      }), "should create this task");
+      db.getAllTasks(function(json) {
+        start();
+        equals(json.length, 1, "should have the added task");
+      });
+      stop(1000);
+    });
+
+    test("retrieve all tasks from db", function() {
+      expect(5);
+      var db = new DB(TEST_DB_URL, true);
+      for (var i = 0; i < test_tasks.length; i++) {
+        ok(db.addTask(test_tasks[i]), "should add test tasks");
+      }
+      db.getAllTasks(function(json) {
+        start();
+        equals(json.length, 4, "should retrieve 4 tasks");
+      });
+      stop(1000);
+    });
+
+    test("insert a new user", function() {
+      expect(1);
+      var db = new DB(TEST_DB_URL, true);
       var user = {
         "name": "Secret",
         "password": "secret",
         "login": "secret"
       };
+      ok(db.addUser(user), "should add the test user");
+    });
+
+    test("finds existing user from db", function() {
+      expect(2);
+      var db = new DB(TEST_DB_URL, true);
+      var user = {
+        "name": "Secret",
+        "password": "secret",
+        "login": "secret"
+      };
+      ok(db.addUser(user), "should add the test user");
       ok(db.hasUser(user), "should have this user");
-      clearTestDB();
     });
 
     test("doesnt find unregistered user from db", function() {
-      createTestDB();
+      expect(1);
+      var db = new DB(TEST_DB_URL, true);
       var user = {
         "name": "White ninja",
         "password": "notsecret",
         "login": "white_ninja"
       };
       ok(!db.hasUser(user), "should not have this user");
-      clearTestDB();
     });
 });
 
