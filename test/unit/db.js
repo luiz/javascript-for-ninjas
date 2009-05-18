@@ -6,7 +6,7 @@ var test_tasks = [
     type: "task",
     where: "Dojo",
     what: "Train ninja skills",
-    until: new Date(),
+    until: "2009-05-22",
     duration: "60"
   },
   {
@@ -14,7 +14,7 @@ var test_tasks = [
     type: "task",
     where: "Black market",
     what: "Buy shurikens",
-    until: new Date(),
+    until: "2009-06-23",
     comment: "Need at least 10"
   },
   {
@@ -22,7 +22,7 @@ var test_tasks = [
     type: "task",
     where: "Dojo",
     what: "Train ninja skills",
-    until: new Date(),
+    until: "2009-05-29",
     duration: "60"
   },
   {
@@ -30,7 +30,7 @@ var test_tasks = [
     type: "task",
     where: "Home",
     what: "Sharpen my sword",
-    until: new Date(),
+    until: "2009-06-23",
     duration: "5"
   }
 ];

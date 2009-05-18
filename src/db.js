@@ -23,7 +23,7 @@ function DB(url, testing) {
     $.ajax({
       type: 'PUT',
       url: this.url + '/' + task.id,
-      data: task,
+      data: $.toJSON(task),
       dataType: 'json',
     });
     return true;
