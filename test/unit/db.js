@@ -54,7 +54,7 @@ $(document).ready(function() {
       ok(db.reset(), "should reset the database");
       db.getAllTasks(function(json) {
         start();
-        equals(json.length, 0, "should have no tasks after reseting");
+        equals(json.total_rows, 0, "should have no tasks after reseting");
       });
       stop(1000);
     });
@@ -72,7 +72,7 @@ $(document).ready(function() {
       }), "should create this task");
       db.getAllTasks(function(json) {
         start();
-        equals(json.length, 1, "should have the added task");
+        equals(json.total_rows, 1, "should have the added task");
       });
       stop(1000);
     });
@@ -85,7 +85,7 @@ $(document).ready(function() {
       }
       db.getAllTasks(function(json) {
         start();
-        equals(json.length, 4, "should retrieve 4 tasks");
+        equals(json.total_rows, 4, "should retrieve 4 tasks");
       });
       stop(1000);
     });

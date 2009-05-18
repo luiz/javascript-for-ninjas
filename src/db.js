@@ -1,15 +1,14 @@
 function DB(url, testing) {
   this.url = url;
   
-  $.ajax({
-    type: 'PUT',
-    url: this.url,
-    async: false
-  });
-
   this.reset = function() {
     $.ajax({
       type: 'DELETE',
+      url: this.url,
+      async: false
+    }); 
+    $.ajax({
+      type: 'PUT',
       url: this.url,
       async: false
     });
@@ -33,7 +32,7 @@ function DB(url, testing) {
   this.getAllTasks = function(callback) {
     $.ajax({
       type: 'GET',
-      url: this.url + '/tasks/_all_docs',
+      url: this.url + '/_all_docs',
       success: callback
     });
   };
