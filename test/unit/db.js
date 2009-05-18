@@ -52,9 +52,9 @@ $(document).ready(function() {
       expect(2);
       var db = new DB(TEST_DB_URL, true);
       ok(db.reset(), "should reset the database");
-      db.getAllTasks(function(json) {
+      db.getAllTasks(function(result) {
         start();
-        equals(json.total_rows, 0, "should have no tasks after reseting");
+        equals(result.total_rows, 0, "should have no tasks after reseting");
       });
       stop(1000);
     });
@@ -70,9 +70,9 @@ $(document).ready(function() {
         what: "Test the application",
         duration: "forever"
       }), "should create this task");
-      db.getAllTasks(function(json) {
+      db.getAllTasks(function(result) {
         start();
-        equals(json.total_rows, 1, "should have the added task");
+        equals(result.total_rows, 1, "should have the added task");
       });
       stop(1000);
     });
@@ -83,9 +83,9 @@ $(document).ready(function() {
       for (var i = 0; i < test_tasks.length; i++) {
         ok(db.addTask(test_tasks[i]), "should add test tasks");
       }
-      db.getAllTasks(function(json) {
+      db.getAllTasks(function(result) {
         start();
-        equals(json.total_rows, 4, "should retrieve 4 tasks");
+        equals(result.total_rows, 4, "should retrieve 4 tasks");
       });
       stop(1000);
     });

@@ -33,7 +33,9 @@ function DB(url, testing) {
     $.ajax({
       type: 'GET',
       url: this.url + '/_all_docs',
-      success: callback
+      success: function(json) {
+        callback($.evalJSON(json));
+      }
     });
   };
 
