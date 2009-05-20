@@ -1,0 +1,37 @@
+ body{
+   background-color: #ececec;
+   font-family: arial, helvetica, serif;
+   color: black;
+ }
+ h1{
+   background-color: gray;
+   color: #eceece;
+ }
+ #test_container{
+   background-color: #eeccee;
+ }
+ 
+ #msg, #result{
+   padding-left: 40px;
+   font-weight: bold;
+ }
+ 
+ p{
+   padding-left: 20px;
+ }
+
+ #area{
+   border: 1px solid black;
+ }
+ 
+ .error{
+   color: red;
+ }
+ 
+ .success{
+   color: #009900;
+ }
+ 
+ #log{
+   background-color: #eccecc;
+ }

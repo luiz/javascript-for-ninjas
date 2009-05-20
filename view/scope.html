@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+	"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<title>Javascript for Ninja</title>
+	<script type="text/javascript" charset="utf-8" src="../lib/JsUnitCore.js"></script>
+	<script type="text/javascript" charset="utf-8" src="../src/palestra.js"></script>
+	<link rel="stylesheet" href="css/palestra.css" type="text/css" media="screen" charset="utf-8">
+	
+	<script type="text/javascript" charset="utf-8">
+    function fn(){
+      return this;
+    }
+    
+    function Ninja(shurikens, katana, pernas){
+      this.shurikens = shurikens;
+      this.katana = katana;
+      this.pernas = pernas;
+    }
+    
+    function Person(nome, idade, shurikens, katana, pernas){
+      this.nome = nome;
+      this.idade = idade;
+      
+      Ninja.call(this, shurikens, katana, pernas);
+      
+    }
+    
+    Person.prototype = new Ninja();
+    
+          
+	  window.onload = function(){
+	    var object = new Object();
+	    assert( fn.call(this) == window, 'O que vai retornar?');
+	    assert( fn() == this , 'Objeto global');
+	    assert( fn.apply(object) == object, 'Retorna o objeto?');
+	    var person = new Person('caire', '20', 2, 1, 2);
+	    assert( person.pernas == 2, 'Caire deveria ter duas pernas, certo?' );
+	  }
+	</script>
+</head>
+
+<body>
+  <h1>Ninja Task</h1>
+  <div id="test_container">
+  </div>
+</body>
+</html>

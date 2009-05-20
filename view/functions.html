@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+	"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<title>Javascript for Ninja</title>
+	<script type="text/javascript" charset="utf-8" src="../lib/JsUnitCore.js"></script>
+	<script type="text/javascript" charset="utf-8" src="../src/palestra.js"></script>
+	<link rel="stylesheet" href="css/palestra.css" type="text/css" media="screen" charset="utf-8">
+	
+	<script type="text/javascript" charset="utf-8">
+    function add(a, b){
+      return a + b;
+    }
+    
+    function multiply(a, b){
+      return a * b;
+    }
+    
+    function formataCpf(){
+      var cpf = '70731237889'.split('');
+      var formatted = '';
+      var count = 0;
+      var mask = '###.###.###-##';
+      
+      for( var item in mask){
+        formatted += mask.charAt(item) != '#' ? mask.charAt(item) : cpf[count++];
+      }
+      
+      return formatted;
+    }
+          
+	  window.onload = function(){
+	    assert( add(5,5) == 10, 'Usando funçoes para somar'  );
+	    assert( multiply(5,5) == 25, 'Agora em vez de somar usamos a função para multiplicar');
+	    assert( formataCpf() == '707.312.378-89', 'Deve formatar o cpf desejado');
+	    assert( add.call(this, 5, 5) == 10, 'O resultado é exatamente o mesmo!');
+	    assert( multiply.apply(this, [5,5]) ==  25, 'Entenda que nada mudou apenas o jeito de chamar a função');
+	  }
+	</script>
+</head>
+
+<body>
+  <h1>Ninja Task</h1>
+  <div id="test_container">
+  </div>
+</body>
+</html>
