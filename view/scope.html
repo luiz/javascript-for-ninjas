@@ -5,7 +5,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
 	<title>Javascript for Ninja</title>
-	<script type="text/javascript" charset="utf-8" src="../lib/JsUnitCore.js"></script>
 	<script type="text/javascript" charset="utf-8" src="../src/palestra.js"></script>
 	<link rel="stylesheet" href="css/palestra.css" type="text/css" media="screen" charset="utf-8">
 	
@@ -14,21 +13,29 @@
       return this;
     }
     
-    function Ninja(shurikens, katana, pernas){
+    function Ninja(shurikens, katana){
       this.shurikens = shurikens;
       this.katana = katana;
-      this.pernas = pernas;
     }
     
-    function Person(nome, idade, shurikens, katana, pernas){
+    function Person(shurikens, katana, nome, idade){
       this.nome = nome;
       this.idade = idade;
       
-      Ninja.call(this, shurikens, katana, pernas);
+      Ninja.call(this, shurikens, katana);
       
     }
     
+    function SrSaude(shurikens, katana, come){
+      this.comeVegetal = come;
+      this.comeBacon  = false;
+      this.comeGoiaba = true;
+      
+      Ninja.apply(this, arguments);
+    }
+    
     Person.prototype = new Ninja();
+    SrSaude.prototype = new Ninja();
     
           
 	  window.onload = function(){
@@ -36,8 +43,11 @@
 	    assert( fn.call(this) == window, 'O que vai retornar?');
 	    assert( fn() == this , 'Objeto global');
 	    assert( fn.apply(object) == object, 'Retorna o objeto?');
-	    var person = new Person('caire', '20', 2, 1, 2);
-	    assert( person.pernas == 2, 'Caire deveria ter duas pernas, certo?' );
+	    var person = new Person(2, 1, 'caire', '20');
+	    assert( person.shurikens == 2, 'Caire deveria ter duas shurikens, certo?' );
+      var luiz = new SrSaude(1, 2, true);
+      assert( luiz.comeVegetal, 'Luiz come vegetal, sempre o.O'  );
+      log(  luiz.comeVegetal, luiz.comeBacon, luiz.comeGoiaba, luiz.shurikens, luiz.katana  );
 	  }
 	</script>
 </head>

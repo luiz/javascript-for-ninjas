@@ -12,7 +12,7 @@ function log(){
   div.id = 'log';
   var p = buildParagraph('');
   for (var i=0; i < arguments.length; i++) {
-    p.innerHTML += ' ' + arguments[i];
+    p.innerHTML += arguments[i] + ' ';
   };
   var h1 = document.createElement('h1');
   h1.innerHTML = 'Log'
@@ -44,4 +44,8 @@ function buildParagraph(){
   var p = document.createElement('p');
   p.innerHTML = arguments[0];
   return p;
+}
+
+String.prototype.trim = function () {
+  return this.replace(/^\s+|\s+$/g, '');
 }

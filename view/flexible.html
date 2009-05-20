@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+	"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<title>JavaScript for Ninja</title>
+	<script type="text/javascript" charset="utf-8" src="../src/palestra.js"></script>
+	<link rel="stylesheet" href="css/palestra.css" type="text/css" media="screen" charset="utf-8">
+	
+	<script type="text/javascript" charset="utf-8">
+	  /*function Pessoa(nome, sobrenome){
+      this.nomeCompleto = nome + '  ' + sobrenome;
+	  }*/
+	  
+	  function Pessoa(){
+	    this.nomeCompleto = '';
+      for (var i=0; i < arguments.length; i++) {
+        this.nomeCompleto +=  arguments[i].trim() + ' ';
+      };
+	  }
+	
+	  window.onload = function(){
+	    var pedro = new Pessoa('Pedro', 'Mariano');
+	    assert(pedro.nomeCompleto.trim() == 'Pedro Mariano', 'O nome completo do Pedro ');
+	    log( pedro.nomeCompleto.trim() );
+	    var luizao = new Pessoa('Luiz', 'Fernando', 'Oliveira', 'Corte', 'Real');
+	    assert(luizao.nomeCompleto.trim() == 'Luiz Fernando Oliveira Corte Real', 'Agora quando você adiciona mais de um sobrenome não havera nenhum problema');
+	  }
+	</script>
+	
+</head>
+
+<body>
+  <h1>Ninja Task</h1>
+  <div id="test_container">
+  </div
+</body>
+</html>
