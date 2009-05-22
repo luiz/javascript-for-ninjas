@@ -2,9 +2,9 @@ function DBGears() {
   this.db = new GearsDB('ninja-gears');
 
   this.reset = function() {
-    this.db.dropTable('user');
+    this.db.dropTable('users');
     this.db.dropTable('tasks');
-    this.db.run('create table users (name varchar(255), password varchar(255), login varchar(255))');
+    this.db.run('create table users (name varchar(255), password varchar(255), login varchar(255), email varchar(255))');
     this.db.run('create table tasks (id varchar(255), type varchar(255), where_to_do varchar(255), what varchar(255), until varchar(255), duration varchar(255), comment varchar(255))');
     return true;
   };
