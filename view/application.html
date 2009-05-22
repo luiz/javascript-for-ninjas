@@ -12,34 +12,34 @@
 </head>
 <body>
   <div id="main">
-   <div id="login" class="hide">
+   <div id="login" class="screen">
       <form action="#" name="toLogin" method="post" id="loginForm">
          <fieldset>
            <legend>Login</legend>
            <dl>
              <dt><label>Login</label></dt>
-             <dd><input type="text" name="user.login" id="username"/><error></error></dd>
+             <dd><input type="text" name="user.login" class="login"/><error></error></dd>
              <dt><label>Senha</label></dt>
-             <dd><input type="password" name="user.password" id="password"><error></error></dd>
+             <dd><input type="password" name="user.password" class="password"><error></error></dd>
              <dt></dt><dd><input type="button" name="Enviar" value="Submit"></dd>
            </dl>
          </fieldset>
       </form>
    </div>
  
-   <div id="register" class="hide">
+   <div id="register" class="screen">
       <form action="#login" name="registerUser" method="post" id="registerForm">
          <fieldset>
             <legend>Cadastro</legend>
                <dl>
                  <dt><label>Login</label></dt>
-                 <dd><input type="text" name="user.login" value="" id="registerUsername"></dd>
+                 <dd><input type="text" name="user.login" value="" class="login"><error></error></dd>
                  <dt><label>Senha</label></dt>
-                 <dd><input type="password" name="user.password" value="" id="registerPassword"></dd>
+                 <dd><input type="password" name="user.password" value="" class="password"><error></error></dd>
                  <dt><label>Confirme a senha</label></dt>
-                 <dd><input type="password" name="user.password.verify" value="" id="registerPasswordVerify"></dd>
+                 <dd><input type="password" name="user.password.verify" value="" class="password"><error></error></dd>
                  <dt><label>E-mail</label></dt>
-                 <dd><input type="text" name="user.email" value="" id="registerEmail"></dd>
+                 <dd><input type="text" name="user.email" value="" class="email"><error></error></dd>
                  <dd></dd><dt><input type="button" name="register" value="Enviar" id="registerButton"></dt>
                </dl>
          </fieldset>
@@ -48,8 +48,8 @@
 
    <div id="menu">
      <ol>
-       <li><a href="#register" title="cadastre-se" id="registerNewUser" onclick="buildRegisterView()">Cadastre-se aqui!</a></li>
-       <li><a href="#login" title="login" class="hide" id="linkToLogin" onclick="buildLoginView()">Faça login</a></li>
+       <li><a href="#register" title="cadastre-se" id="registerLink" onclick="hideViewsAndShow('register')">Cadastre-se aqui!</a></li>
+       <li><a href="#login" title="login" class="hide" id="loginLink" onclick="hideViewsAndShow('login')">Faça login</a></li>
      </ol>
    </div>
  </div>
