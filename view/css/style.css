@@ -1,12 +1,36 @@
-/*
-   TODO Think about the style.
-*/
-
-body{
+body {
    background-color: #000001;
    color: #ffffff;
    font-family: arial, helvetica, serif;
    font-size: 1em;
+}
+
+div#main {
+  width: 75%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+div#menu {
+  background-color: #111;
+}
+
+div#menu ol {
+  list-style: none;
+}
+
+div#menu ol li {
+  display: inline-block;
+  padding: 5px;
+}
+
+div#menu a {
+  color: white;
+  padding: 5px;
+}
+
+div#menu a:hover {
+  background-color: #333;
 }
 
 error{
@@ -16,42 +40,25 @@ error{
    padding-left: 20px;
 }
 
-cite a{
+a {
    text-decoration: none;
    color: #2323c3;
    font-style: normal;
    font-family: verdana, helvetica, serif;
 }
 
-form fieldset{
-   margin-left: 10px;
-   width: 360px;
-   float: right;
-   font-family: tahoma,helvetica,serif;
+
+form fieldset {
+    border: 0;
 }
 
-form fieldset legend{
-   padding: 0 2px;
+form fieldset legend {
+   padding: 0 50%;
    font-weight: bold;
-}
-
-form fieldset ol{
-   list-style: none;
-}
-
-form fieldset ol li{
-   list-style: none;
-   padding: 5px;
-   margin: 0;  
-}
-
-form fieldset ol li label{
-   display: inline-block;
-   line-height: 1.8;
-   vertical-align: top;
-   width: 120px;
+   font-size: 2em;
 }
 
 .hide{
    display:none;
 }
+

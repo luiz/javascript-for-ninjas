@@ -1,6 +1,3 @@
-/*
-  TODO All  javascript stuffs.
-*/
 $(function(){  
   $('div#login').show();
   var login = $('input#username');
@@ -10,9 +7,6 @@ $(function(){
   validate.password(password);
 });
 
-/*
-  Coloque aqui as views
-*/
 var viewsId = []
 viewsId[0] = 'login';
 viewsId[1] = 'register';

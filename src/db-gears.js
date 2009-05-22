@@ -1,4 +1,4 @@
-DB.Gears = function() {
+function DBGears() {
   this.db = new GearsDB('ninja-gears');
 
   this.reset = function() {

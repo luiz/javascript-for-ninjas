@@ -38,7 +38,7 @@ $(document).ready(function() {
 
     test("reset the db", function() {
       expect(2);
-      var db = new DB.Gears();
+      var db = new DBGears();
       ok(db.reset(), "should reset the database");
       db.getAllTasks(function(result) {
         start();
@@ -49,7 +49,7 @@ $(document).ready(function() {
 
     test("add a task to the db", function() {
       expect(2);
-      var db = new DB.Gears();
+      var db = new DBGears();
       db.reset();
       ok(db.addTask({
         id: "test_task",
@@ -67,7 +67,7 @@ $(document).ready(function() {
 
     test("retrieve all tasks from db", function() {
       expect(5);
-      var db = new DB.Gears();
+      var db = new DBGears();
       for (var i = 0; i < test_tasks.length; i++) {
         ok(db.addTask(test_tasks[i]), "should add test tasks");
       }
@@ -80,7 +80,7 @@ $(document).ready(function() {
 
     test("insert a new user", function() {
       expect(1);
-      var db = new DB.Gears();
+      var db = new DBGears();
       var user = {
         name: "Secret",
         password: "secret",
@@ -91,7 +91,7 @@ $(document).ready(function() {
 
     test("finds existing user from db", function() {
       expect(2);
-      var db = new DB.Gears();
+      var db = new DBGears();
       var user = {
         name: "Secret",
         password: "secret",
@@ -103,7 +103,7 @@ $(document).ready(function() {
 
     test("doesnt find unregistered user from db", function() {
       expect(1);
-      var db = new DB.Gears();
+      var db = new DBGears();
       var user = {
         name: "White ninja",
         password: "notsecret",
