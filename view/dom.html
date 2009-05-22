@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"r 
+	"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<title>Javascript for Ninja</title>
+	<script type="text/javascript" charset="utf-8" src="../src/palestra.js"></script>
+	<link rel="stylesheet" href="css/palestra.css" type="text/css" media="screen" charset="utf-8">
+	
+	<script type="text/javascript" charset="utf-8">
+    Array.prototype.each = function(fn){ 
+      for ( var i = 0; i < this.length; i++ ) { 
+        fn( i, this[i] ); 
+      } 
+    };
+	
+	
+	Document.prototype.getElementsByClass = function(el, className){
+	  var els = document.getElementsByTagName(el);
+	  var elementsWithClass = [];
+    for (var i=0; i < els.length; i++) {
+      if(els[i].className == className){
+        elementsWithClass.push(els[i]);
+      }
+    };  
+    return elementsWithClass;
+	}
+	
+	
+	window.onload = function (){
+    var c = document.getElementsByClass('div', 'teste');
+    console.log(c);
+    
+	}
+
+	</script>
+</head>
+
+<body>
+  <h1>Ninja Task</h1>
+  <div id="test_container">
+  </div>
+  <div class="teste"></div>
+</body>
+</html>

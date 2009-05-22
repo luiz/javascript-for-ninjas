@@ -9,6 +9,14 @@
 	<link rel="stylesheet" href="css/palestra.css" type="text/css" media="screen" charset="utf-8">
 	
 	<script type="text/javascript" charset="utf-8">
+	String.prototype.trim = function () {
+    var  str = this.replace(/^\s\s*/, ''),
+       ws = /\s/,
+       i = str.length;
+    while (ws.test(str.charAt(--i)));
+    return str.slice(0, i + 1);
+  }
+	
 	  /*function Pessoa(nome, sobrenome){
       this.nomeCompleto = nome + '  ' + sobrenome;
 	  }*/
@@ -23,7 +31,6 @@
 	  window.onload = function(){
 	    var pedro = new Pessoa('Pedro', 'Mariano');
 	    assert(pedro.nomeCompleto.trim() == 'Pedro Mariano', 'O nome completo do Pedro ');
-	    log( pedro.nomeCompleto.trim() );
 	    var luizao = new Pessoa('Luiz', 'Fernando', 'Oliveira', 'Corte', 'Real');
 	    assert(luizao.nomeCompleto.trim() == 'Luiz Fernando Oliveira Corte Real', 'Agora quando você adiciona mais de um sobrenome não havera nenhum problema');
 	  }

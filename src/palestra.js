@@ -46,6 +46,11 @@ function buildParagraph(){
   return p;
 }
 
-String.prototype.trim = function () {
-  return this.replace(/^\s+|\s+$/g, '');
+if (!Array.prototype.each) { 
+  Array.prototype.each = function(fn){ 
+    alert(this);
+    for ( var i = 0; i < this.length; i++ ) { 
+      fn( this[i] ); 
+    } 
+  }; 
 }

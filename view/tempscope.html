@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"r 
+	"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<title>Javascript for Ninja</title>
+	<script type="text/javascript" charset="utf-8" src="../src/palestra.js"></script>
+	<link rel="stylesheet" href="css/palestra.css" type="text/css" media="screen" charset="utf-8">
+	
+	<script type="text/javascript" charset="utf-8">
+	window.onload = function (){
+	  var count = 0;
+    for (var i=0; i < 4; i++) 
+      setTimeout(function(){
+        assert(i == count++, 'valor do i deve ser igual ao do count incrementado, certo?');
+      }, i * 200);
+	}
+
+	</script>
+</head>
+
+<body>
+  <h1>Ninja Task</h1>
+  <div id="test_container">
+  </div>
+</body>
+</html>

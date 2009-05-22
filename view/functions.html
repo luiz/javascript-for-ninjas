@@ -19,15 +19,14 @@
     
     function formataCpf(){
       var cpf = '70731237889'.split('');
-      var formatted = '';
+      var formattedValue = '';
       var count = 0;
       var mask = '###.###.###-##';
       
-      for( var item in mask){
-        formatted += mask.charAt(item) != '#' ? mask.charAt(item) : cpf[count++];
+      for( var size in mask){
+        formattedValue += mask.charAt(size) != '#' ? mask.charAt(size) : cpf[count++];
       }
-      
-      return formatted;
+      return formattedValue;
     }
           
 	  window.onload = function(){
